@@ -1,39 +1,7 @@
-#FROM n8nio/n8n:latest
+FROM n8nio/n8n:latest
 
 # Expose n8n’s default port
 #EXPOSE 5678
 
 # Start n8n
-#CMD ["n8n"]
-
-
-
-#=================================================================
-# Use official n8n image
-FROM n8nio/n8n:latest
-
-# Set working directory
-WORKDIR /home/node
-
-# Expose the port Render assigns
-EXPOSE 10000
-
-# Use Render's dynamic port and external URL
-ENV N8N_PORT=${PORT:-10000}
-ENV N8N_HOST=0.0.0.0
-ENV WEBHOOK_URL=https://${RENDER_EXTERNAL_URL}/
-ENV N8N_SECURE_COOKIE=false
-
-# Authentication (replace values with your own or set them in Render dashboard)
-ENV N8N_BASIC_AUTH_ACTIVE=true
-ENV N8N_BASIC_AUTH_USER=admin
-ENV N8N_BASIC_AUTH_PASSWORD=YourStrongPassword123
-
-# Encryption key – must be 32 characters (generate one!)
-ENV N8N_ENCRYPTION_KEY=ReplaceWith32CharacterRandomKey
-
-# Set timezone (optional)
-ENV TZ=UTC
-
-# Start n8n
-CMD ["n8n", "start"]
+CMD ["n8n"]
